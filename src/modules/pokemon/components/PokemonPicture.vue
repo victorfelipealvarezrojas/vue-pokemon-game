@@ -12,21 +12,14 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import type { PokemonPictureProps } from '../interfaces';
+import { URL_IMAGE } from '../api/utlis';
 
-interface PokemonPictureProps {
-  pokemon_id: number;
-  show_pokemon?: boolean;
-}
-
-// esto es para que se pueda usar props del componente padre
 const props = withDefaults(defineProps<PokemonPictureProps>(), {
-  show_pokemon: false, // por defecto no se muestra la imagen, withDefaults es una función de vue que permite definir valores por defecto
+  show_pokemon: false,
 });
 
-const pokemonImage = computed(
-  () =>
-    `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${props.pokemon_id}.svg`,
-);
+const pokemonImage = computed(() => `${URL_IMAGE}${props.pokemon_id}.svg`);
 </script>
 
 <style scoped>
