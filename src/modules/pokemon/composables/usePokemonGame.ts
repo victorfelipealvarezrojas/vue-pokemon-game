@@ -57,7 +57,6 @@ export const usePokemonGame = () => {
   onMounted(async () => {
     pokemons.value = await getPokemon();
     getNextOptions();
-    console.log('pokemons', pokemonOptions.value);
   });
 
   return {
